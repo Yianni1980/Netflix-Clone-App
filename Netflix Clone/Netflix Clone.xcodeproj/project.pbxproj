@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0B10F4C8283D977100F32C7D /* HeroHeaderUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B10F4C7283D977100F32C7D /* HeroHeaderUIView.swift */; };
+		0B25674628554FEC00C14847 /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B25674528554FEC00C14847 /* SearchResultsViewController.swift */; };
 		0B61118C284559F70055B48B /* TitleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B61118B284559F70055B48B /* TitleCollectionViewCell.swift */; };
 		0B61118F28455C0D0055B48B /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 0B61118E28455C0D0055B48B /* SDWebImage */; };
 		0B61119128455C0D0055B48B /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0B61119028455C0D0055B48B /* SDWebImageMapKit */; };
@@ -30,6 +31,7 @@
 
 /* Begin PBXFileReference section */
 		0B10F4C7283D977100F32C7D /* HeroHeaderUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroHeaderUIView.swift; sourceTree = "<group>"; };
+		0B25674528554FEC00C14847 /* SearchResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
 		0B61118B284559F70055B48B /* TitleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleCollectionViewCell.swift; sourceTree = "<group>"; };
 		0B8EC53B283707EF0073F483 /* Netflix Clone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Netflix Clone.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B8EC53E283707EF0073F483 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +65,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B2567472855502600C14847 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				0B8EC55328370D690073F483 /* HomeViewController.swift */,
+				0B8EC55928370E000073F483 /* DownloadsViewController.swift */,
+				0B8EC55528370D900073F483 /* UpcomingViewController.swift */,
+				0B8EC55728370DD30073F483 /* SearchViewController.swift */,
+				0B8EC542283707EF0073F483 /*  MainTabBarViewController.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		0B2567482855505E00C14847 /* General */ = {
+			isa = PBXGroup;
+			children = (
+				0B25674528554FEC00C14847 /* SearchResultsViewController.swift */,
+			);
+			path = General;
+			sourceTree = "<group>";
+		};
 		0B8EC532283707EF0073F483 = {
 			isa = PBXGroup;
 			children = (
@@ -90,7 +112,6 @@
 				0B8EC55228370D340073F483 /* Controllers */,
 				0B8EC53E283707EF0073F483 /* AppDelegate.swift */,
 				0B8EC540283707EF0073F483 /* SceneDelegate.swift */,
-				0B8EC542283707EF0073F483 /*  MainTabBarViewController.swift */,
 				0B8EC547283707F00073F483 /* Assets.xcassets */,
 				0B8EC549283707F00073F483 /* LaunchScreen.storyboard */,
 				0B8EC54C283707F00073F483 /* Info.plist */,
@@ -101,10 +122,8 @@
 		0B8EC55228370D340073F483 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				0B8EC55328370D690073F483 /* HomeViewController.swift */,
-				0B8EC55528370D900073F483 /* UpcomingViewController.swift */,
-				0B8EC55728370DD30073F483 /* SearchViewController.swift */,
-				0B8EC55928370E000073F483 /* DownloadsViewController.swift */,
+				0B2567482855505E00C14847 /* General */,
+				0B2567472855502600C14847 /* Core */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -238,6 +257,7 @@
 				0B10F4C8283D977100F32C7D /* HeroHeaderUIView.swift in Sources */,
 				0B8EC55A28370E000073F483 /* DownloadsViewController.swift in Sources */,
 				0B8EC53F283707EF0073F483 /* AppDelegate.swift in Sources */,
+				0B25674628554FEC00C14847 /* SearchResultsViewController.swift in Sources */,
 				0BE6227D284430EC004226C3 /* Extensions.swift in Sources */,
 				0B8EC541283707EF0073F483 /* SceneDelegate.swift in Sources */,
 				0B8EC55628370D900073F483 /* UpcomingViewController.swift in Sources */,
