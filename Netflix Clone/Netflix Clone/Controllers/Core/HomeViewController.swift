@@ -38,6 +38,7 @@ class HomeViewController: UIViewController {
         homeFeedTable.tableHeaderView = headerView
         
         //fetchData()
+       
         
     }
     private func configureNavBar() {
