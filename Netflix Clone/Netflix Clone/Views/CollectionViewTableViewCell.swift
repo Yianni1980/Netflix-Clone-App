@@ -7,11 +7,15 @@
 
 import UIKit
 
+protocol CollectionViewTableViewCellDelegate:AnyObject {
+    func CollectionViewTableViewCellDidTapCell (_ cell:CollectionViewTableViewCell,viewModel:TitlePreviewViewModel)
+}
+
 class CollectionViewTableViewCell: UITableViewCell {
 
     static let identifier = "CollectionViewTableViewCell"
     private var titles:[Title] = [Title]()
-
+    weak var delegate: CollectionViewTableViewCellDelegate?
     private let collectionView:UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: 140, height: 200)
@@ -71,11 +75,18 @@ extension CollectionViewTableViewCell:UICollectionViewDelegate,UICollectionViewD
         let title = titles[indexPath.row]
         guard let titleName = title.original_name ?? title.original_name else {return}
         
-        APICaller.shared.getMovie(with: titleName + "trailer") { result in
+        APICaller.shared.getMovie(with: titleName + "trailer") { [weak self] result in
             switch result {
                 
             case .success(let videoelement):
-                print(videoelement.id)
+                let title = self?.titles[indexPath.row]
+                guard let titleOverView = title?.overview else {return}
+                guard let strongSelf = self else {
+                    return
+                }
+                let viewModel = TitlePreviewViewModel(title: titleName, youtubeView: videoelement, titleOverview: titleOverView)
+                
+                self?.delegate?.CollectionViewTableViewCellDidTapCell(strongSelf, viewModel: viewModel)
             case .failure(let error):
                 print(error)
             }
