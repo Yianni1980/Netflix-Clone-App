@@ -20,6 +20,9 @@ class HomeViewController: UIViewController {
     
     let sectionTitles = ["Trending Movies","Trending TV","Popular","Upcomning Movies","Top Rated"]
     
+    private var randomTrendingMovie:Title?
+    private var headerView: HeroHeaderUIView?
+    
     private let homeFeedTable: UITableView = {
         let table = UITableView(frame: .zero, style: .grouped)
         table.register(CollectionViewTableViewCell.self, forCellReuseIdentifier: CollectionViewTableViewCell.identifier)
@@ -34,14 +37,36 @@ class HomeViewController: UIViewController {
         homeFeedTable.delegate = self
         homeFeedTable.dataSource = self
         configureNavBar()
-        let headerView = HeroHeaderUIView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 450))
+        headerView = HeroHeaderUIView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 450))
         homeFeedTable.tableHeaderView = headerView
-         
+        configureHeroHeaderView()
         //fetchData()
         
        
         
     }
+    
+    
+    private func configureHeroHeaderView() {
+        APICaller.shared.getTrendingMovies { [weak self] result in
+            switch result {
+                
+            case .success(let titles):
+                
+                let selectedTitle = titles.randomElement()
+                
+                self?.randomTrendingMovie = selectedTitle
+                
+                self?.headerView?.configure(with: TitleViewModel(titleName: selectedTitle?.original_title ?? "", posterURL: selectedTitle?.poster_path ?? ""))
+                
+            case .failure( let error):
+                
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    
     private func configureNavBar() {
         var image = UIImage(named: "netflix")
         image = image?.withRenderingMode(.alwaysOriginal)
