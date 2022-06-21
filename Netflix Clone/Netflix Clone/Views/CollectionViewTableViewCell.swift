@@ -52,7 +52,19 @@ class CollectionViewTableViewCell: UITableViewCell {
         }
     }
     private func downloadTitleAt(indexpath:IndexPath) {
-        print("Downloading\(titles[indexpath.row].original_title)")
+        DataPersistenceManager.shared.downloadTitleWith(model: titles[indexpath.row]) { result in
+            
+            switch result {
+                
+            case .success():
+               print("downloaded to Database")
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+            
+        }
+
+
     }
 }
 extension CollectionViewTableViewCell:UICollectionViewDelegate,UICollectionViewDataSource {
